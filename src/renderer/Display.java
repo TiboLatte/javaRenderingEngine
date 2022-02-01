@@ -9,6 +9,8 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
+import renderer.point.ObjectPoint;
+import renderer.shapes.ObjectPolygon;
 import renderer.shapes.Tetrahedron;
 
 public class Display extends Canvas implements Runnable {
@@ -79,7 +81,26 @@ public class Display extends Canvas implements Runnable {
 	}
 
 	private void init() {
-		this.tetra = new Tetrahedron(Color.BLUE);
+		int s = 100;
+		ObjectPoint p1 = new ObjectPoint(s/2,-s/2,-s/2);
+		ObjectPoint p2 = new ObjectPoint(s/2,s/2,-s/2);
+		ObjectPoint p3 = new ObjectPoint(s/2,s/2,s/2);
+		ObjectPoint p4 = new ObjectPoint(s/2,-s/2,s/2);
+		ObjectPoint p5 = new ObjectPoint(-s/2,-s/2,-s/2);
+		ObjectPoint p6 = new ObjectPoint(-s/2,s/2,-s/2);
+		ObjectPoint p7 = new ObjectPoint(-s/2,s/2,s/2);
+		ObjectPoint p8 = new ObjectPoint(-s/2,-s/2,s/2);
+		
+		
+		
+		this.tetra = new Tetrahedron(
+				new ObjectPolygon(Color.BLUE, p1,p2,p3,p4),
+				new ObjectPolygon(Color.WHITE, p5,p6,p7,p8),
+				new ObjectPolygon(Color.RED, p1,p2,p6,p5),
+				new ObjectPolygon(Color.YELLOW, p1,p5,p8,p4),
+				new ObjectPolygon(Color.GREEN, p2,p6,p7,p3),
+				new ObjectPolygon(Color.CYAN, p7,p3,p7,p8)
+				);
 	}
 
 	private void render() {

@@ -10,9 +10,16 @@ public class Tetrahedron {
 	public Tetrahedron(Color color, ObjectPolygon... polygons) {
 		this.color = color;
 		this.polygons = polygons; //be careful on pointer here
-		
+		this.setPolygonColor();
 		
 	}
+	
+	public Tetrahedron(ObjectPolygon... polygons) {
+		this.color = color.WHITE;
+		this.polygons = polygons; //be careful on pointer here
+		
+	}
+	
 	
 	public void render(Graphics g) {
 		for(ObjectPolygon poly : this.polygons) {
